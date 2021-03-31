@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "boeva-daagt-uit"
+  },
+  "targets": {
+    "boeva-daagt-uit": {
+      "hosting": {
+        "main": [
+          "boeva-daagt-uit"
+        ]
+      }
+    }
+  }
+}
