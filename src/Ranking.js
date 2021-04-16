@@ -55,8 +55,6 @@ export default function Ranking() {
         }
         return previous;
       }, 0);
-      console.log("bonus", bonus);
-
       return { ...user, bonus };
     })
     .sort((a, b) => b.linesSent + b.bonus - (a.linesSent + a.bonus))
