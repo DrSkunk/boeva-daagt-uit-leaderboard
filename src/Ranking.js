@@ -48,19 +48,33 @@ export default function Ranking() {
   });
 
   const ranking = Object.values(values)
-    .sort((a, b) => b.linesSent - a.linesSent)
-    .map((user, i) => (
-      <tr key={user.userId}>
-        <td>
-          <Place index={i} />
-        </td>
-        <td>{user.name}</td>
-        {dates.map((date, i) => (
-          <td key={date + i}>{user[date] ? user[date] : "-"}</td>
-        ))}
-        <td>{user.linesSent}</td>
-      </tr>
-    ));
+    .map((user) => {
+      const bonus = dates.reduce((previous, current) => {
+        if (user[current]) {
+          return previous + 100;
+        }
+        return previous;
+      }, 0);
+      console.log("bonus", bonus);
+
+      return { ...user, bonus };
+    })
+    .sort((a, b) => b.linesSent + b.bonus - (a.linesSent + a.bonus))
+    .map((user, i) => {
+      return (
+        <tr key={user.userId}>
+          <td>
+            <Place index={i} />
+          </td>
+          <td>{user.name}</td>
+          {dates.map((date, i) => (
+            <td key={date + i}>{user[date] ? user[date] : "-"}</td>
+          ))}
+          <td>{user.bonus}</td>
+          <td>{user.linesSent + user.bonus}</td>
+        </tr>
+      );
+    });
 
   const dateTitles = dates.map((date) => <th key={date}>{date.slice(5)}</th>);
 
@@ -72,6 +86,7 @@ export default function Ranking() {
             <th>#</th>
             <th>Name</th>
             {dateTitles}
+            <th>Bonus</th>
             <th>Score</th>
           </tr>
         </thead>
