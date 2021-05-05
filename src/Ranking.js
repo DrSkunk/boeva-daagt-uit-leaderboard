@@ -65,11 +65,11 @@ export default function Ranking() {
             <Place index={i} />
           </td>
           <td>{user.name}</td>
+          <td>{user.linesSent + user.bonus}</td>
           {dates.map((date, i) => (
             <td key={date + i}>{user[date] ? user[date] : "-"}</td>
           ))}
           <td>{user.bonus}</td>
-          <td>{user.linesSent + user.bonus}</td>
         </tr>
       );
     });
@@ -77,15 +77,21 @@ export default function Ranking() {
   const dateTitles = dates.map((date) => <th key={date}>{date.slice(5)}</th>);
 
   return (
-    <div className="nes-table-responsive center">
+    <div
+      className="nes-table-responsive"
+      style={{
+        overflow: "scroll",
+        height: "calc(100vh - 360px)",
+      }}
+    >
       <table className="nes-table is-bordered is-centered">
         <thead>
           <tr>
             <th>#</th>
             <th>Name</th>
+            <th>Score</th>
             {dateTitles}
             <th>Bonus</th>
-            <th>Score</th>
           </tr>
         </thead>
         <tbody>{ranking}</tbody>

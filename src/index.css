@@ -11,18 +11,16 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("https://i.imgur.com/VRvRkN6.png");
+  background-image: url("https://i.imgur.com/I3B4mrH.png");
   background-position: bottom;
   background-attachment: fixed;
   background-repeat: repeat-x;
 }
 
-.center {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-}
-
 tr:hover {
   background-color: #ccc;
+}
+h1,
+h2 {
+  text-align: center;
 }
