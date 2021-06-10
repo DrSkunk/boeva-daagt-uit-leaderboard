@@ -16,23 +16,30 @@ export default function App() {
         </a>
       </h2>
       <div
-        class="nes-container with-title is-centered"
+        class="nes-container is-centered"
         style={{
           marginBottom: 18,
         }}
       >
-        <p class="title">Sponsored by</p>
         <img
-          height="100"
+          height="200"
           alt="Red Bull"
-          src="https://i.imgur.com/Pttah9V.png"
+          src="/redbull.jpg"
+          style={{ margin: "0 1rem" }}
         />
+
         <img
           height="50"
           alt="Alternate"
-          src="https://www.alternate.be/mobile/javax.faces.resource/ALTERNATE_Logo.png.xhtml?ln=pix"
+          src="/alternate.png"
+          style={{ margin: "0 1rem" }}
         />
       </div>
+      <p style={{ textAlign: "center" }}>
+        <a href="https://sebastiaanjansen.be/" style={{ color: "black" }}>
+          Leaderboard by DrSkunk <img alt="DrSkunk logo" src="/drskunk.png" />
+        </a>
+      </p>
       <Ranking />
     </div>
   );

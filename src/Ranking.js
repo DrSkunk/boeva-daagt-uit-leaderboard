@@ -47,6 +47,8 @@ export default function Ranking() {
     });
   });
 
+  const omitUserIds = ["605c8c8f8adae6238ca91efc", "6064dd84eaf3050c435dbe01"];
+
   const ranking = Object.values(values)
     .map((user) => {
       const bonus = dates.reduce((previous, current) => {
@@ -58,6 +60,7 @@ export default function Ranking() {
       return { ...user, bonus };
     })
     .sort((a, b) => b.linesSent + b.bonus - (a.linesSent + a.bonus))
+    .filter((user) => !omitUserIds.includes(user.userId))
     .map((user, i) => {
       return (
         <tr key={user.userId}>
